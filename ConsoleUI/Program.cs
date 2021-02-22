@@ -1,6 +1,5 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
-using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
 
@@ -24,11 +23,20 @@ namespace ConsoleUI
             //var result = colorManager.Add(new Color { Name = "Gri" });
             //Console.WriteLine(result.Message);
 
-            var result = carManager.GetCarDetails();
-            foreach (var item in result.Data)
-            {
-                Console.WriteLine("Adı " + item.Brand + ", Renk: " + item.Color + ", Açıklama: " + item.Description + ", Fiyat: " + item.DailyPrice);
-            }
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            //var result = customerManager.Add(new Customer { UserId = 1, CompanyName = "Deneme" });
+            //Console.WriteLine(result.Message);
+
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var result = rentalManager.Add(new Rental { CarId = 1, CustomerId = 1, RentDate = DateTime.Now });
+            Console.WriteLine(result.Message);
+
+
+            //var result = carManager.GetCarDetails();
+            //foreach (var item in result.Data)
+            //{
+            //    Console.WriteLine("Adı " + item.Brand + ", Renk: " + item.Color + ", Açıklama: " + item.Description + ", Fiyat: " + item.DailyPrice);
+            //}
         }
     }
 }

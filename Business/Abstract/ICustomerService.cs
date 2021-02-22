@@ -6,8 +6,8 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface IBrandService
+    public interface ICustomerService
     {
-        IResult Add(Brand brand);
+        IResult Add(Customer customer);
     }
 }
