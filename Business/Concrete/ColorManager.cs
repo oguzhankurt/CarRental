@@ -23,5 +23,11 @@ namespace Business.Concrete
             _colorDal.Add(color);
             return new SuccessResult(Messages.AddColor);
         }
+
+        public IResult Delete(Color color)
+        {
+            _colorDal.Delete(color);
+            return new SuccessResult(Messages.ColorDelete);
+        }
     }
 }

@@ -23,5 +23,27 @@ namespace Business.Concrete
             _brandDal.Add(brand);
             return new SuccessResult(Messages.AddBrand);
         }
+
+        public IResult Delete(Brand brand)
+        {
+            _brandDal.Delete(brand);
+            return new SuccessResult(Messages.DeleteBrand);
+        }
+
+        public IDataResult<Brand> Get(Brand brand)
+        {
+            return new SuccessDataResult<Brand>(_brandDal.Get(p=>p.Id == brand.Id));
+        }
+
+        public IDataResult<List<Brand>> GetAll()
+        {
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), true, Messages.ListedBrands);
+        }
+
+        public IResult Update(Brand brand)
+        {
+            _brandDal.Update(brand);
+            return new SuccessResult(Messages.UpdateBrand);
+        }
     }
 }

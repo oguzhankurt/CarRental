@@ -20,6 +20,28 @@ namespace WebAPI.Controllers
             _brandService = brandService;
         }
 
+        [HttpGet("getall")]
+        public IActionResult GetlAll()
+        {
+            var result = _brandService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("get")]
+        public IActionResult Get(Brand brand)
+        {
+            var result = _brandService.Get(brand);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpPost("addbrand")]
         public IActionResult Add(Brand brand)
         {

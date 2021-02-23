@@ -19,5 +19,13 @@ namespace Business.Constants
         public static string RentalInvalid = "Araç teslim edilmemiş";
 
         public static string AddBrand = "Marka eklendi";
+
+        public static string DeleteBrand = "Marka Silindi";
+
+        public static string UpdateBrand = "Marka gğncellendi";
+
+        public static string ListedBrands = "Marakalar Listelendi";
+
+        public static string ColorDelete = "Renk silindi";
     }
 }
