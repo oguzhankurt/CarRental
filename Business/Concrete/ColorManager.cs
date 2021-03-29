@@ -31,5 +31,12 @@ namespace Business.Concrete
             _colorDal.Delete(color);
             return new SuccessResult(Messages.ColorDelete);
         }
+
+        [SecuredOperation("admin")]
+        public IResult Update(Color color)
+        {
+            _colorDal.Update(color);
+            return new SuccessResult(Messages.ColorUpdate);
+        }
     }
 }
