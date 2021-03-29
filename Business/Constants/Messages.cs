@@ -27,5 +27,14 @@ namespace Business.Constants
         public static string ListedBrands = "Marakalar Listelendi";
 
         public static string ColorDelete = "Renk silindi";
+
+        public static string CarDelete = "Araba silindi";
+        public static string UserRegistered = "Kayıt oldu";
+        public static string UserNotFound = "Kullanıcı bulunamdı";
+        public static string PasswordError = "Parola hatası";
+        public static string SuccessfulLogin = "Girişi başarılı";
+        public static string UserAlreadyExists = "Kullanıcı mevut";
+        public static string AccessTokenCreated = "Token oluşturuldu";
+        public static string AuthorizationDenied = "Yetkiniz yok!";
     }
 }

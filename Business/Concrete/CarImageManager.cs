@@ -63,9 +63,9 @@ namespace Business.Concrete
         private IResult CheckIfCarImageLimitExceded(int carId)
         {
             var result = _carImageDal.GetAll(c => c.CarId == carId).Count;
-            if(result > 6)
+            if(result >= 5)
             {
-                return new ErrorResult("5 ten fazla araba eklenemez");
+                return new ErrorResult("5 ten fazla görsel eklenemez");
             }
             return new SuccessResult();
         }

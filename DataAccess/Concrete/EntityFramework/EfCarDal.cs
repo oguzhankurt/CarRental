@@ -13,7 +13,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, CarContext>, ICarDal
     {
-        public List<CarDetailDto> GetCarDetail()
+        public List<CarDetailDto> GetCarDetails()
         {
             using (CarContext context = new CarContext())
             {
@@ -22,9 +22,40 @@ namespace DataAccess.Concrete.EntityFramework
                              on p.ColorId equals c.Id
                              join d in context.Brands
                              on p.BrandId equals d.Id
-                             select new CarDetailDto { Id = p.Id, Brand = d.Name, Color = c.Name, DailyPrice = p.DailyPrice, ModelYear = p.ModelYear, Description = p.Description };
+                             select new CarDetailDto
+                             {
+                                 Id = p.Id,
+                                 Brand = d.Name,
+                                 Color = c.Name,
+                                 DailyPrice = p.DailyPrice,
+                                 ModelYear = p.ModelYear,
+                                 Description = p.Description
+                             };
                 return result.ToList();
             }
         }
+
+        public CarDetailDto GetCarDetail(Expression<Func<CarDetailDto, bool>> filter)
+        {
+            using (CarContext context = new CarContext())
+            {
+                var result = from p in context.Cars
+                             join c in context.Colors
+                             on p.ColorId equals c.Id
+                             join d in context.Brands
+                             on p.BrandId equals d.Id
+                             select new CarDetailDto
+                             {
+                                 Id = p.Id,
+                                 Brand = d.Name,
+                                 Color = c.Name,
+                                 DailyPrice = p.DailyPrice,
+                                 ModelYear = p.ModelYear,
+                                 Description = p.Description
+                             };
+                return result.SingleOrDefault(filter);
+            }
+        }
+
     }
 }
